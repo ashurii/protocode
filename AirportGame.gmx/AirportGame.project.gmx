@@ -7,8 +7,10 @@
   <sounds name="sound"/>
   <sprites name="sprites">
     <sprite>sprites\PlayerRight</sprite>
+    <sprite>sprites\PlayerRCrawl</sprite>
     <sprite>sprites\wall_spr</sprite>
     <sprite>sprites\vine_spr</sprite>
+    <sprite>sprites\Bubble_spr</sprite>
   </sprites>
   <backgrounds name="background"/>
   <paths name="paths"/>
@@ -18,10 +20,12 @@
     <object>objects\wall</object>
     <object>objects\par_ladder</object>
     <object>objects\vine</object>
+    <object>objects\bubble_spawner</object>
+    <object>objects\bubble</object>
   </objects>
   <rooms name="rooms">
-    <room>rooms\room1</room>
     <room>rooms\room0</room>
+    <room>rooms\room1</room>
   </rooms>
   <help>
     <rtf>help.rtf</rtf>
