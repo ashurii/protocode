@@ -27,11 +27,15 @@
             <kind>1</kind>
             <string>///INITIALIZE VALUES
 grav = 0.4;
-hsp = 0;
+horizontalVelocity = 0;
 vsp = 0;
-moveSpeed = 4;
+accelerationInterval = 5; //TODO Implement based on time
+runningAccelerationFactor = 2;
+runningDecelerationFactor = 2;
+maxRunningSpeed = 80;
+walkingSpeed = 4;
 jumpSpeed = 6;
-move = 0;
+horizontalInputDirection = 0;
 xPos = x;
 yPos = y;
 facing = 0;
@@ -54,7 +58,7 @@ ladder = false;
         <exetype>2</exetype>
         <functionname></functionname>
         <codestring></codestring>
-        <whoName>self</whoName>
+        <whoName>other</whoName>
         <relative>0</relative>
         <isnot>0</isnot>
         <arguments>
@@ -71,10 +75,39 @@ keyUp = keyboard_check_direct(ord("W"));
 keyDown = keyboard_check_direct(ord("S"));
 
 
-//React to inputs 
+/*
+ * React to inputs 
+ */
+// Set running direction
+horizontalInputDirection = keyLeft + keyRight;
+//Change horizontal velocity
+// If the player is below walking speed
+if(abs(horizontalVelocity) &lt; walkingSpeed) {
+    // Accelerate instantly to walking speed in either direction or instantly stop.
+    horizontalVelocity = horizontalInputDirection * walkingSpeed;
+}
+// Otherwise, if the player is at or above walking speed
+else{
+    // If horizontal input and horizontal velocity have the same direction
+    if((horizontalVelocity &lt; 0) == (horizontalInputDirection &lt; 0) &amp;&amp; horizontalInputDirection != 0) {
+        // Accelerate up to max speed
+        if(abs(horizontalVelocity) &lt; maxRunningSpeed) {
+            horizontalVelocity += horizontalInputDirection * runningAccelerationFactor;
+        }
+        if(abs(horizontalVelocity) &gt; maxRunningSpeed) {
+            horizontalVelocity = horizontalInputDirection * maxRunningSpeed;
+        }
+    } else {
+        // Otherwise, decelerate
+        if(horizontalVelocity &gt; 0) {
+            horizontalVelocity -= runningDecelerationFactor;
+        }
+        else if(horizontalVelocity &lt; 0) {
+            horizontalVelocity += runningDecelerationFactor;
+        }
+    }
+}
 
-move = keyLeft + keyRight;
-hsp = move * moveSpeed;
 if(vsp &lt; 10)
 {
     vsp +=grav;
@@ -85,13 +118,13 @@ if(place_meeting(x,y+1,par_wall))
     
 }
 //Horizontal Collision
-if(place_meeting(x+hsp,y, par_wall))
+if(place_meeting(x+horizontalVelocity,y, par_wall))
 {
-    while(!place_meeting(x+sign(hsp),y,par_wall))
+    while(!place_meeting(x+sign(horizontalVelocity),y,par_wall))
     {
-        x+= sign(hsp);
+        x+= sign(horizontalVelocity);
     }
-   hsp = 0;
+   horizontalVelocity = 0;
     
 }
 if(place_meeting(x,y +vsp, par_wall))
@@ -120,7 +153,9 @@ if(ladder)
     if(!place_meeting(x,y,par_ladder)){ ladder = false;}
     if(keyJump){ ladder = false;}
 }
-x +=hsp;
+
+//UPDATE
+x +=horizontalVelocity;
 y +=vsp;
 
 
@@ -148,12 +183,12 @@ y +=vsp;
           <argument>
             <kind>1</kind>
             <string>///SPRITE
-if(facing == 0 &amp;&amp; move == -1)
+if(facing == 0 &amp;&amp; horizontalInputDirection == -1)
 {
     image_xscale = image_xscale*-1; 
     facing = 1;
 }
-else if(facing == 1 &amp;&amp; move == 1)
+else if(facing == 1 &amp;&amp; horizontalInputDirection == 1)
 {
     image_xscale = image_xscale*-1;
     facing =0;
