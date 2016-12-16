@@ -8,13 +8,16 @@
   <sprites name="sprites">
     <sprite>sprites\PlayerRight</sprite>
     <sprite>sprites\wall_spr</sprite>
+    <sprite>sprites\vine_spr</sprite>
   </sprites>
   <backgrounds name="background"/>
   <paths name="paths"/>
   <objects name="objects">
     <object>objects\Player</object>
+    <object>objects\par_wall</object>
     <object>objects\wall</object>
-    <object>objects\object2</object>
+    <object>objects\par_ladder</object>
+    <object>objects\vine</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\room0</room>

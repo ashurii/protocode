@@ -37,6 +37,7 @@ yPos = y;
 facing = 0;
 jumping = false;
 grounded = true;
+ladder = false;
 </string>
           </argument>
         </arguments>
@@ -63,9 +64,12 @@ grounded = true;
 
 //Get Player Input 
 
-keyLeft = -keyboard_check(ord("A"));
-keyRight = keyboard_check(ord("D"));
-keyJump = keyboard_check_pressed(vk_space);
+keyLeft = -keyboard_check_direct(ord("A"));
+keyRight = keyboard_check_direct(ord("D"));
+keyJump = keyboard_check_direct(vk_space);
+keyUp = keyboard_check_direct(ord("W"));
+keyDown = keyboard_check_direct(ord("S"));
+
 
 //React to inputs 
 
@@ -75,29 +79,46 @@ if(vsp &lt; 10)
 {
     vsp +=grav;
 }
-if(place_meeting(x,y+1,wall))
+if(place_meeting(x,y+1,par_wall))
 {
     vsp += keyJump * -jumpSpeed;
     
 }
 //Horizontal Collision
-if(place_meeting(x+hsp,y, wall))
+if(place_meeting(x+hsp,y, par_wall))
 {
-    while(!place_meeting(x+sign(hsp),y,wall))
+    while(!place_meeting(x+sign(hsp),y,par_wall))
     {
         x+= sign(hsp);
     }
    hsp = 0;
     
 }
-if(place_meeting(x,y +vsp, wall))
+if(place_meeting(x,y +vsp, par_wall))
 {
-    while(!place_meeting(x,y+sign(vsp),wall))
+    while(!place_meeting(x,y+sign(vsp),par_wall))
     {
         y+= sign(vsp);
     }
    vsp = 0;
     
+}
+//CLIMBING
+
+if(keyUp || keyDown)
+{
+    if(place_meeting(x,y,par_ladder))
+    {
+        ladder = true;
+    }
+}
+if(ladder)
+{
+    vsp = 0;
+    if(keyUp){ vsp-=4;}
+    if(keyDown){ vsp+=4;}
+    if(!place_meeting(x,y,par_ladder)){ ladder = false;}
+    if(keyJump){ ladder = false;}
 }
 x +=hsp;
 y +=vsp;
@@ -126,7 +147,7 @@ y +=vsp;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Sprite
+            <string>///SPRITE
 if(facing == 0 &amp;&amp; move == -1)
 {
     image_xscale = image_xscale*-1; 
