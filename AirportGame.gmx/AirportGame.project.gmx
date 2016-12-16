@@ -7,6 +7,7 @@
   <sounds name="sound"/>
   <sprites name="sprites">
     <sprite>sprites\PlayerRight</sprite>
+    <sprite>sprites\PlayerRCrawl</sprite>
     <sprite>sprites\wall_spr</sprite>
     <sprite>sprites\vine_spr</sprite>
   </sprites>
@@ -20,8 +21,8 @@
     <object>objects\vine</object>
   </objects>
   <rooms name="rooms">
-    <room>rooms\room1</room>
     <room>rooms\room0</room>
+    <room>rooms\room1</room>
   </rooms>
   <help>
     <rtf>help.rtf</rtf>
