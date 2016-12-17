@@ -30,11 +30,11 @@ grav = 0.4;
 horizontalVelocity = 0;
 vsp = 0;
 accelerationInterval = 5; //TODO Implement based on time
-runningAccelerationFactor = 0.5;
-runningDecelerationFactor = 0.5;
-maxRunningSpeed = 6;
-walkingSpeed = 4;
-crawlSpeed = 3;
+runningAccelerationFactor = 0.1;
+runningDecelerationFactor = 0.2;
+maxRunningSpeed = 4;
+walkingSpeed = 3;
+crawlSpeed = 2;
 jumpSpeed = 6;
 horizontalInputDirection = 0;
 xPos = x;
@@ -46,6 +46,7 @@ ladder = false;
 crawling = false;
 
 sprite_collision_mask(Player_spr, false, 2, 0, 0, 24, 31, 1, 0);
+display_reset(2,true);
 </string>
           </argument>
         </arguments>
@@ -131,7 +132,7 @@ if(place_meeting(x+horizontalVelocity, y, par_wall))
     
 }
 //Vertical collision
-if(place_meeting(x, bbox_bottom + vsp +1, par_wall))
+if(place_meeting(x, bbox_bottom + vsp +1, par_wall)||place_meeting(x,bbox_top - vsp -1, par_wall))
 {
     while(!place_meeting(x,bbox_bottom+sign(vsp),par_wall))
     {
