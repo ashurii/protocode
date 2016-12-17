@@ -11,6 +11,8 @@
     <sprite>sprites\wall_spr</sprite>
     <sprite>sprites\vine_spr</sprite>
     <sprite>sprites\Bubble_spr</sprite>
+    <sprite>sprites\Player_spr</sprite>
+    <sprite>sprites\ground_spr</sprite>
   </sprites>
   <backgrounds name="background"/>
   <paths name="paths"/>
