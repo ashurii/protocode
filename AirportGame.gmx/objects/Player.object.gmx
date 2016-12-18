@@ -132,12 +132,13 @@ if(place_meeting(x+horizontalVelocity, y, par_wall))
     
 }
 //Vertical collision
-if(place_meeting(x, bbox_bottom + vsp +1, par_wall)||place_meeting(x,bbox_top - vsp -1, par_wall))
+if(place_meeting(x, bbox_bottom + vsp +1, par_wall) || place_meeting(x, y + vsp, par_wall))
 {
-    while(!place_meeting(x,bbox_bottom+sign(vsp),par_wall))
+    while(!place_meeting(x,bbox_bottom+sign(vsp),par_wall) )
     {
         y+= sign(vsp);
     }
+
     
    vsp = 0;
 }
@@ -179,8 +180,19 @@ if(ladder)
 {
     vsp = 0;
     grav = 0.0;
-    if(keyUp){ vsp-=4;}
-    if(keyDown){ vsp+=4;}
+    if(keyUp &amp;&amp; !place_meeting(x,bbox_top +vsp,par_wall)){ vsp-=4;}
+    
+    else if(keyUp &amp;&amp; place_meeting(x,bbox_top + vsp,par_wall))
+    {
+        while(!place_meeting(x,bbox_top+12+sign(vsp),par_wall))
+        {
+            y-= 1;
+        }   
+    
+        vsp=0;
+    }
+    if(keyDown &amp;&amp; !place_meeting(x,bbox_bottom,par_wall +vsp)){ vsp+=4;}
+    
     if(!place_meeting(x,y,par_ladder)){ ladder = false;}
     if(keyJump){ ladder = false;}
     

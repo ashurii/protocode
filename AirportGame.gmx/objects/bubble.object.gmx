@@ -29,6 +29,8 @@
 
 steppedOn = false;
 lifeTimer = 0;
+sinkTimer = 7;
+riseTimer = 7;
 bubbleSpeed = irandom_range(2,6);
 </string>
           </argument>
@@ -66,7 +68,20 @@ if(!steppedOn)
 }
 else
 {
-    bubbleSpeed = 0;
+    sinkTimer -= 1;
+    if(sinkTimer &gt; 0)
+    {
+        bubbleSpeed = -1.5;
+    }
+    else if(sinkTimer &lt;= 0)
+    {
+        bubbleSpeed = 1.5;
+        riseTimer -=1;
+    }
+    if(riseTimer &lt;= 0)
+    {
+        bubbleSpeed = 0;
+    }
     image_speed = 1;
     if(image_index == 20){ instance_destroy();}
 }
