@@ -32,8 +32,8 @@ vsp = 0;
 accelerationInterval = 5; //TODO Implement based on time
 runningAccelerationFactor = 0.1;
 runningDecelerationFactor = 0.2;
-maxRunningSpeed = 4;
-walkingSpeed = 3;
+maxRunningSpeed = 6;
+walkingSpeed = 2;
 crawlSpeed = 2;
 jumpSpeed = 6;
 horizontalInputDirection = 0;
@@ -131,7 +131,6 @@ if(place_meeting(x+horizontalVelocity, y, par_wall))
    horizontalVelocity = 0;
     
 }
-x += horizontalVelocity;
 //Vertical collision
 if(place_meeting(x, bbox_bottom + vsp +1, par_wall) || place_meeting(x, y + vsp, par_wall))
 {
@@ -144,7 +143,7 @@ if(place_meeting(x, bbox_bottom + vsp +1, par_wall) || place_meeting(x, y + vsp,
    vsp = 0;
 }
 
-
+x += horizontalVelocity;
 y +=vsp;
 </string>
           </argument>
@@ -201,7 +200,47 @@ if(ladder)
 else{grav = 0.4;}
 //UPDATE
 x +=horizontalVelocity;
+y +=vsp;///CLIMBING
+
+//CLIMBING
+
+if(keyUp || keyDown)
+{
+    if(place_meeting(x,y,par_ladder))
+    {
+        ladder = true;
+    }
+}
+if(ladder)
+{
+    vsp = 0;
+    grav = 0.0;
+    if(keyUp &amp;&amp; !place_meeting(x,bbox_top +vsp,par_wall)){ vsp-=4;}
+    
+    else if(keyUp &amp;&amp; place_meeting(x,bbox_top + vsp,par_wall))
+    {
+        while(!place_meeting(x,bbox_top+12+sign(vsp),par_wall))
+        {
+            y-= 1;
+        }   
+    
+        vsp=0;
+    }
+    if(keyDown &amp;&amp; !place_meeting(x,bbox_bottom,par_wall +vsp)){ vsp+=4;}
+    
+    if(!place_meeting(x,y,par_ladder)){ ladder = false;}
+    if(keyJump){ ladder = false;}
+    
+}
+else{grav = 0.4;}
+//UPDATE
+x +=horizontalVelocity;
 y +=vsp;
+
+
+
+
+
 
 
 
