@@ -13,10 +13,12 @@
     <sprite>sprites\Bubble_spr</sprite>
     <sprite>sprites\Player_spr</sprite>
     <sprite>sprites\ground_spr</sprite>
+    <sprite>sprites\slope_spr</sprite>
   </sprites>
   <backgrounds name="background"/>
   <paths name="paths"/>
   <objects name="objects">
+    <object>objects\slope_obj</object>
     <object>objects\Player</object>
     <object>objects\par_wall</object>
     <object>objects\wall</object>

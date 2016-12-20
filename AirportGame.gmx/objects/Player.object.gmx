@@ -124,12 +124,20 @@ if(place_meeting(x,bbox_bottom+1,par_wall))
 //Horizontal Collision
 if(place_meeting(x+horizontalVelocity, y, par_wall))
 {
-    while(!place_meeting(x+sign(horizontalVelocity),y,par_wall))
-    {
-        x+= sign(horizontalVelocity);
+    yplus = 0;
+    while(place_meeting(x+horizontalVelocity, y-yplus, par_wall) &amp;&amp; yplus &lt;= abs(1*horizontalVelocity)) yplus +=1;
+    if(place_meeting(x+horizontalVelocity,y-yplus,par_wall))
+    {   
+        while(!place_meeting(x+sign(horizontalVelocity),y,par_wall))
+        {
+            x+= sign(horizontalVelocity);
+        }
+        horizontalVelocity = 0;
     }
-   horizontalVelocity = 0;
-    
+    else
+    { 
+        y-= yplus;
+    }
 }
 x += horizontalVelocity;
 //Vertical collision
