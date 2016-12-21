@@ -6,31 +6,24 @@
   <NewExtensions/>
   <sounds name="sound"/>
   <sprites name="sprites">
-    <sprite>sprites\PlayerRight</sprite>
-    <sprite>sprites\PlayerRCrawl</sprite>
     <sprite>sprites\wall_spr</sprite>
     <sprite>sprites\vine_spr</sprite>
-    <sprite>sprites\Bubble_spr</sprite>
-    <sprite>sprites\Player_spr</sprite>
-    <sprite>sprites\ground_spr</sprite>
-    <sprite>sprites\slope_spr</sprite>
+    <sprite>sprites\player_walk_spr</sprite>
+    <sprite>sprites\sprite3</sprite>
   </sprites>
   <backgrounds name="background"/>
   <paths name="paths"/>
   <objects name="objects">
-    <object>objects\slope_obj</object>
-    <object>objects\Player</object>
-    <object>objects\par_wall</object>
-    <object>objects\wall</object>
     <object>objects\par_ladder</object>
-    <object>objects\vine</object>
-    <object>objects\bubble_spawner</object>
+    <object>objects\obj_wall</object>
+    <object>objects\par_wall</object>
     <object>objects\bubble</object>
-    <object>objects\player_obj</object>
+    <object>objects\bubble_spawner</object>
+    <object>objects\vine</object>
+    <object>objects\obj_player</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\room0</room>
-    <room>rooms\room1</room>
   </rooms>
   <help>
     <rtf>help.rtf</rtf>
