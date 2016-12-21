@@ -61,15 +61,16 @@
     <instance objName="vine" x="512" y="144" name="inst_A2AA328D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="vine" x="512" y="112" name="inst_0AB958BD" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="bubble_spawner" x="688" y="304" name="inst_8F2DCB63" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="Player" x="128" y="312" name="inst_48E09BA8" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="wall" x="144" y="352" name="inst_2470A441" locked="0" code="" scaleX="5.25" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="wall" x="512" y="400" name="inst_22BEA9E7" locked="0" code="" scaleX="2.5" scaleY="0.75" colour="4294967295" rotation="0"/>
-    <instance objName="wall" x="364" y="316" name="inst_FDF2F874" locked="0" code="" scaleX="5.25" scaleY="0.5" colour="4294967295" rotation="0"/>
+    <instance objName="wall" x="364" y="320" name="inst_FDF2F874" locked="0" code="" scaleX="5.25" scaleY="0.5" colour="4294967295" rotation="0"/>
     <instance objName="wall" x="552" y="80" name="inst_7DF1950F" locked="0" code="" scaleX="2" scaleY="0.5" colour="4294967295" rotation="0"/>
     <instance objName="wall" x="800" y="168" name="inst_E6B36662" locked="0" code="" scaleX="1.75" scaleY="0.25" colour="4294967295" rotation="0"/>
     <instance objName="wall" x="80" y="312" name="inst_C7DAB6A5" locked="0" code="" scaleX="0.75" scaleY="1.75" colour="4294967295" rotation="0"/>
     <instance objName="slope_obj" x="224" y="320" name="inst_AF7918E0" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="slope_obj" x="248" y="308" name="inst_38F8FE34" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="wall" x="172" y="248" name="inst_50915F7B" locked="0" code="" scaleX="2.625" scaleY="0.75" colour="4294967295" rotation="0"/>
+    <instance objName="Player" x="152" y="304" name="inst_3EC7E353" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles/>
   <PhysicsWorld>0</PhysicsWorld>
